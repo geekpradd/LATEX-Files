@@ -1,0 +1,40 @@
+\documentclass[a4paper]{article}
+
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\setlength{\parindent}{0pt}
+
+\title{Solution to Problem 3}
+\author{Pradipta Bora}
+
+\begin{document}
+\maketitle
+
+It is given that it is possible for every robot to reach any square on the grid after a finite set of commands. This implies that from everysquare there is a path to any other square on the grid. We are intersted in the shortest path among all these paths. If there are more than one such paths then we will use any one. It is obvious that such a path cannot have a cycle as otherwise we can remove that cycle to get an even shorter path. \newline
+
+Let $S(a, b)$ denote the minimum number of commands that a robot must take to go from  square $a$ to $b$ via one of the shortest paths linking $a$ and $b$. It is obvious from the minimality that all the commands given to the robot are through passable edges. Also $S(a, b) = 0$ if and only if $a$ and $b$ are the same. \newline
+
+\textbf{Lemma 1}: It is possible to give a finite set of commands so that two robots can end up on the same square.
+
+\textbf{Proof}: We will describe an algorithm that achieves the above result.
+Let us take the two robots as $A$ and $B$ and denote their present squares by $a$ and $b$. \newline
+
+We will choose any arbitary robot, say $A$ and continue with it for the remaining part of the algorithm. We will now give the first command that is counted in $S(a, b)$ that takes the robot $A$ from $a$ to $b$. As we have stated above this command is through a passable edge for the robot $A$. Let the new squares of robot $A$ and $B$ be $a'$ and $b'$. \newline
+
+We claim $S(a', b') \leq S(a, b)$. To prove this notice that $S(a', b) = S(a, b) - 1$ as we have already travelled one step in the linking shortest path. Now $S(b, b') = 1 $ if the robot $B$ moved or $S(b, b') = 0$ if it did not move.\newline
+
+It is easy to see from the definition of $S(a, b)$ that $S(a, c) \leq S(a, b) + S(b, c)$. Hence $S(a', b')  \leq S(a', b) + S(b, b') \leq  S(a, b) - 1 + 1 = S(a, b)$. Also note that whenever $S(b, b') = 0$, $S(a', b') \leq S(a, b) - 1$.\newline
+
+If we repeat the above algorithm with positions $a'$ and $b'$ and continue in a similar manner it follows that at all points the number of steps between the present squares of the robots is always less than or equal to the starting number of steps. \newline
+However whenever the command asks the Robot $B$ to pass through an impassable edge the number of steps in the shortest path decreases.
+As the boundary edges of the finite grid are always impassable it follows that number of steps in the shortest path will keep on decreasing as robot B arrives on a square adjacent to the boundary as otherwise it would imply that the grid is infinite. 
+
+So eventually the number of commands between the squares of the robots $A$ and $B$ will become zero. But this precisely implies that the robots are on the same square and we will stop the algorithm. We have shown that the result of the lemma is possible and our proof is complete.\newline
+
+
+Now we will use the result of the lemma. We give the sequence of commands as used in the Lemma to bring two robots into the same square. Now for all purposes these robots can be treated as one entity as they would now move together. Therfore repeating the algorithm described in the lemma would ensure that one by one all robots would converge into same squares and they would move togther. Finally all robots would end up in the same square via the algorithm. And so we have shown that it is possible to give a finite sequence of commands so that all thr robots end up on the same square.
+
+ 
+\end{document}

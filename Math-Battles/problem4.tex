@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\setlength{\parindent}{0pt}
+
+\title{Solution to Problem 4}
+\author{Pradipta Bora}
+
+\begin{document}
+\maketitle
+
+
+
+
+Let $g(x, a) = 1^a + 2^a + 3^a \cdots +  x^a, a \in N$. We claim that $g(x, a)$ is a polynomial of degree $a+1$ in $x$. We will prove this claim by strong induction on $a$.
+
+
+Note that $g(x, 1) = \frac{x(x+1)}{2} $ which is a polynomial in $x$ of degree $2$. We have used the A.P sum formula here for the base case.
+
+
+
+Suppose that $g(x, i)$ is a polynomial of degree $i+1$ for $i = 1, 2, \cdots, a$.
+
+
+Consider the following telescopic sum:
+
+$$ \sum_{r=1}^{x} (r+1)^{a+2} - r^{a+2} = \sum_{r=1}^{x} \sum_{k = 0}^{a+1} \dbinom{a+2}{k} r^k $$
+
+$$\implies (x+1)^{a+2} - 1  =  \sum_{r=1}^{x} \sum_{k = 0}^{a+1} \dbinom{a+2}{k} r^k = x + \sum_{k = 1}^{a} \dbinom{a+2}{k} g(x, k) + (a+2)g(x, a+1)$$
+
+$$\implies g(x, a+1) = \frac{1}{a+2}((x+1)^{a+2} - 1 - x - \sum_{k = 1}^{a} \dbinom{a+2}{k} g(x, k))$$
+
+
+Observe that the sum of $g(x, i)$ contains polynomials of degree atmost $a+1$ whereas the term $(x+1)^{a+2}$ contains $x^{a+2}$ which is obtained from the binomial theorem. 
+
+Hence it follows that as the coefficient of $x^{a+2}$ is not zero in the RHS and as the RHS is obtained by adding or subtracting polynomials, $g(x, a+1)$ is a polynomial of degree $a+2$. This completes the inductive step.
+
+Hence we have proved that for all natural $a$, $1^a + 2^a + \cdots  x^a$ is a polynomial of degree $a+1$.
+
+
+ 
+\end{document}

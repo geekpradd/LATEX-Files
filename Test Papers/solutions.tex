@@ -1,0 +1,139 @@
+\documentclass[a4paper]{article}
+
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+
+\title{Algebra Problem Set Solutions}
+\author{Pradipta Bora}
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+
+Solutions to my algebra problem set.
+
+\section{Solutions}
+
+\begin{enumerate}
+\item Find the value of $$ \sum_{k=1}^{\infty} (\log_e 2)^k \sum_{r=1}^k \frac {r^2}{r!(k-r)!} $$.
+
+Solution: Let $S = \sum_{r=1}^k \frac {r^2}{r!(k-r)!}$.
+Then $S = \frac{1}{n!} \sum_{r=1}^k r^2 \dbinom{n}{r} = \frac{1}{n!} \sum_{r=1}^k r^2 \dbinom{n}{n-r}$
+
+\item Find $$ \sum_{k=0}^{\infty} \sum_{j=0}^{\infty} \sum_{i=0}^{\infty} \frac{1}{3^i3^j3^k}$$ with the condition $ i\neq j \neq k$.
+
+\item If $ 9^x + 2(1-a) 3^x + a = 0 $ has two roots $p, q$ such that $pq < 0$ where $a$ is an
+integer from $0$ to $30$ (inclusive), then find the number of values of $a$.
+
+\item Find the value of $$  \dbinom{n}{1} - (1 + \frac{1}{2})\dbinom{n}{2} + (1 + \frac{1}{2} + \frac{1}{3})\dbinom{n}{3}... (-1)^{n-1}(1 + \frac{1}{2} ... + \frac{1}{n})\dbinom{n}{n}$$ in terms of $n$. 
+
+\item If $z^{17} = 1$ where $ z \neq 1$ then find the value of $$ \displaystyle \sum_{k=1}^{16} \frac{z^{2k} - 1}{z^{2k} + z^{k} + 1} $$.
+
+\textbf{Solution}: $$  \sum_{k=1}^{16} \frac{z^{2k} - 1}{z^{2k} + z^{k} + 1}  = \sum_{k=1}^{16} \frac{z^{2k}}{z^{2k} + z^{k} + 1} - \sum_{k=1}^{k=16} \frac{1}{z^{2k} + z^{k} + 1}$$
+$$ = \sum_{k=1}^{16} \frac{1}{1 + z^{17}z^{-k} + z^{34}z^{-2k}} - \sum_{k=1}^{k=16} \frac{1}{z^{2k} + z^{k} + 1} = \sum_{k=1}^{k=16} \frac{1}{z^{2k} + z^{k} + 1} - \sum_{k=1}^{k=16} \frac{1}{z^{2k} + z^{k} + 1} = 0$$
+
+\item Let $f(n)$ be the number of all permutations $(a_1,a_2, \cdots , a_n)$ of $(1,2, \cdots ,n)$ such that $a_i > a_{i+1} $ for exactly one index $i$ , $ 1 \le i \le n-1$. Find the last digit of $f(10)$.
+
+\textbf{Solution}: We will find $f(n)$ first.
+Notice that if $i = 1$ then $a_i$ is one of $2, 3... n$. Similarly if $i= 3$ then $a_i = 4, 5... n$ where $i$ is the only index with the property $a_i > a_{i+1} $.
+
+This is because the elements to the left of $a_i$ and the one on the right have to be smaller than $a_i$. So there must be $i-1 + 1 = i$ numbers that are less than $a_i$.
+Generally if $i = k$, then $a_i$ is one of $k+1, k+2, ... n$.
+
+Also for this value of $a_i$ we must choose $k-1$ values which will be present on the left of $a_i$ and these values must be from $1, 2... a_i - 1$ and these $k-1$ values can then be written in only one way in increasing order.
+Choosing this set uniquely determines the entire sequence as the values on the right of $a_i$ can then be arranged in only one way in increasing order.
+
+Hence the final answer is
+$$\displaystyle \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \dbinom{j-1}{i-1}$$Here $i$ represents the index and $j$ is the value of $a_i$.
+
+This sum is equal to (after rearranging indexes) $$\sum_{i=1}^{n-1} \dbinom{i}{0} + \dbinom{i}{1} ... \dbinom{i}{i-1} = 
+ \sum_{i=1}^{n-1} 2^{i} - 1 =  2(2^{n-1}-1) - (n-1) = 2^{n} - (n+1)$$ which is the final value of $f(n)$.
+
+
+Thus $f(10) = 2^{10} - 11 = 1013$ yielding the answer as $3$.
+
+\item Two $n$ digit numbers $a, b$ are said to be compatible if their digits are permutations of each other. Also $a, b$ can have leading zeroes. For example $1203$ and $0213$ are $4$ digit compatible numbers. Find the size of the largest possible set of $6$ digit numbers (leading zeroes allowed) such that no two numbers of this set are compatible.
+
+\textbf{Solution}: Since permutations don't count, every number in the largest subset is characterized by the number of occurences of each digit.
+So if $x_i$ represents the number of times digit $i$ occurs in the number, we want the number of non negative integral solutions to
+$\displaystyle x_0 + x_1 \cdots +  x_9 = 6$ which is simply $$\displaystyle \dbinom{6 + 10 - 1}{10 - 1} = \dbinom {15}{9}$$. 
+
+
+\item Let $A = \lbrace{1,2,3, \cdots , 100} \rbrace$. Find the total number of subsets $B$ of $A$ such that $B$ has 20 elements and for any $b_1,b_2 \in B$ , $|b_1 - b_2| \ge 4$.
+
+\textbf{Solution}: Let the subset be ${a_1, a_2, ..., a_{20}}$ such that $a_i < a_j $ for all $ i < j $. That is we are taking the elements in increasing order.
+
+The condition is equivalent to saying that the value of $a_{i+1} - a_i  \geq 4$ for all $ 1 \leq i \leq 19$.
+
+Define $a_0 = 0$ and $a_{21} = 100$. Also denote $b_i = a_i - a_{i-1}$ for $ 1 \leq i \leq 21$.
+
+Then $b_1 + b_2 + b_3 ... + b_{21} = 100$. Also the set of values of $b_i$ uniquely determine all subsets of $A$ as the value of $b_i$ gives the distance of $a_{i+1}$ from $a_i$. The condition we have is equivalent to saying $b_i \geq 4$ for $2 \leq i \leq 20$. Also note that $b_1 \geq 1$ as $a_1 \geq 1$.
+
+We can now easily find the number of solutions of:
+$(b_1 -  1)+ (b_2 - 4) + (b_3 - 4) .... + (b_{20} - 4) + b_{21} = 100 - 19*4 - 1 = 23$ using the known formula of the number of postive integral solutions to a linear equation .
+
+The answer therefore is $$\dbinom{23 + 21 - 1}{21 - 1} = \dbinom{43}{20}$$.
+
+\item Find the value of:
+$ \displaystyle \sum_{n=1}^{\infty}\frac{\cos(nx)} {3^n} $ if $x = \frac{\pi}{6}$.
+
+\textbf{Solution}: The answer can be found out for all $x \in R$ by using complex numbers. We can then set the desired value of $x$.
+
+Note that $ Re(\frac{e^{ix}}{3}) = \frac{\cos(x)}{3}$. Using De Moivre's theorem we have, $$ Re(\frac{e^{inx}}{3^n}) = \frac{\cos(nx)}{3^n}$$. 
+
+This gives us a nice geometric series to sum on the left hand side.
+
+Using the fact that $ \sum_{k=1}^{n} Re(a_i) = Re(\sum_{k=1}^{n} a_i)$ for any values of the sequence $a_i$ and $n$, we have:
+
+$$ \sum_{n=1}^{\infty} \frac{\cos(nx)}{3^n} = Re( \sum_{n=1}^{\infty}  (\frac{e^{ix}}{3})^n ) $$.
+
+We can find right hand side value as it is the real part of a  geometric series by using the infinite GP formula as $Re(\frac{e^{ix}}{3 - e^{ix}})$.
+
+After some simplification this evaluates to $$\displaystyle \frac{3\cos(x) - 1}{10 - 6\cos(x)}$$
+
+Setting $\displaystyle x = \frac{\pi}{6}$ the answer is $\displaystyle \frac{3\sqrt{3}-2}{2(10 - 3\sqrt{3})}$.
+
+P.S: The choice of $3$ in the denominator is completely arbitrary. It can be can be any complex number as long as the modulus of the common ratio is $ < 1 $.
+
+\item Consider the set S = $\lbrace{
+1, 2, 3 \cdots n} \rbrace$. A subset of this set is called arithmetic if the elements of this subset are in arithmetic progression when written in ascending order. 
+
+Such a subset is called maximal arithmetic if we cannot increase the size of this subset by adding another element from S. Let $f(n)$ be the number of such maximal arithmetic subsets for a fixed n.
+
+Find the remainder when $f(25)$ is divided by $9$.
+
+\item Consider a Polynomial $P(x)$ with real coefficients with the property that whenever $P(x) \in Z $ then $ x \in Z $. Also $P(0) = 2017$. If the maximum possible degree of $P(x)$ is $n$ then what is the remainder when $n$ is divided by 10?
+
+\textbf{Solution}: The key observation is that any such Polynomial $P(x)$ must be linear. We will prove a general theorem first:
+
+\textbf{Theorem}: If $f(x)$ is a polynomial with real coefficients and $deg(f) \geq 2$ then it is
+not possible that whenever $f(x)$ is an integer , $x$ is also an integer.
+
+\textbf{Proof}: Let $deg(f) = n$.
+Without loss of generality we can assume that the coefficient of $x^n > 0$. We can account for the other situation by considering $p(x) = -f(x)$ and continuing with $p(x)$.
+
+Because of the assumption, we can choose an infinitely large $a$ such that $f(a) = z$ where $z$ is an arbitrarily large positive integer and $f'(a) > 1$. This follows from the fact that $f(x)$ and $f'(x)$ tend to infinity as $x$ tends to infinity. 
+
+This also means that $f'(x) > f'(a)$ for all $ x > a$ since $f'(x)$ is a polynomial with leading coefficient $ > 0$ and hence increasing when $x$ is infinitely large.
+
+Case 1: $a$ is not an integer. This proves the theorem.
+
+Case 2: $a$ is an integer.
+Consider $g(x) = x + z - a$. As $f'(x) > f'(a) >  1 = g'(x) $ for all $x > a$ and $f(a) = g(a)$ it follows that $f(x) > g(x)$ for all $x > a$.
+
+So $f(a+1) > g(a+1) = z + 1$.
+As $f(x)$ is continuous it follows that there is some $y \in (a, a+1)$ such that $f(y) = z+1$ and this proves the theorem.
+
+As a consequence our polynomial $P(x)$ must be either constant or linear. However if it is constant then $P(x) = 2017$ which is an integer over all real $x$ contradicting the condition of the question.
+
+Hence $P(x)$ is linear. Finally see that $P(x) = x + 2017$ satisfies all the conditions and is in fact the only polynomial possible satisfying the constraints.
+
+The degree therefore is $1$ and the remainder when $1$ is divided by $10$ is $1$ yielding the final answer.
+\end{enumerate}
+
+
+\end{document}
